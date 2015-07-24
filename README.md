@@ -184,7 +184,10 @@ $ gulp test
 ```
 
 
-
+[Typescript]: http://www.typescriptlang.org/Handbook
 [Require.js]: http://requirejs.org/
+[Karma-requirejs]: http://karma-runner.github.io/0.13/plus/requirejs.html
+[gulp-typescript]: https://www.npmjs.com/package/gulp-typescript
+[gulp-karma]: https://github.com/karma-runner/gulp-karma
 [Issue]: https://github.com/Microsoft/TypeScript/issues/293
 [IssueDetail]: https://github.com/Microsoft/TypeScript/issues/1567
