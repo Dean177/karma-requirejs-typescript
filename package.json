@@ -1,0 +1,29 @@
+{
+  "name": "karma-typescript-jasmine-requirejs",
+  "version": "0.0.1",
+  "description": "Testing Tyescript amd modules code with Karma\r ==================================",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjbekkelund/karma-requirejs.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kjbekkelund/karma-requirejs/issues"
+  },
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.8.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-requirejs": "^0.2.2",
+    "phantomjs": "^1.9.17",
+    "requirejs": "^2.1.19"
+  }
+}
