@@ -1,7 +1,7 @@
 Testing Require.js code with Karma
 ==================================
 
-To get Karma to run with [Require.js] we need two files:
+To get Karma to run with Typescripts [Require.js] modules we need a few files:
 
 * `karma.conf.js` &mdash; which configures Karma
 * `test-main.js` &mdash; which configures Require.js for the tests
@@ -66,11 +66,6 @@ Now your `karma.conf.js` should include:
 ```javascript
 // list of files / patterns to load in the browser
 files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  REQUIRE,
-  REQUIRE_ADAPTER,
-
   {pattern: 'lib/**/*.js', included: false},
   {pattern: 'src/**/*.js', included: false},
   {pattern: 'test/**/*Spec.js', included: false},
@@ -143,63 +138,53 @@ requirejs.config({
     callback: window.__karma__.start
 });
 ```
+## AMD gotchas in typescript
 
 ## Using Require.js in tests
 
-Tests can now be written as regular Require.js modules. We wrap
-everything in `define`, and inside we can use the regular test methods,
+Tests can now be written as regular Typescript modules and inside we can use the regular test methods,
 such as `describe` and `it`. Example:
 
-```javascript
-define(['app', 'jquery', 'underscore'], function(App, $, _) {
+```typescript
+///<reference path="../definitions/underscore.d.ts" />
+import App = require('');
 
-    describe('just checking', function() {
+describe('just checking', () => {
 
-        it('works for app', function() {
-            var el = $('<div></div>');
+    it('works for app', () => {
+        var el = $('<div></div>');
 
-            var app = new App(el);
-            app.render();
+        var app = new App(el);
+        app.render();
 
-            expect(el.text()).toEqual('require.js up and running');
-        });
+        expect(el.text()).toEqual('require.js up and running');
+    });
 
-        it('works for underscore', function() {
-            // just checking that _ works
-            expect(_.size([1,2,3])).toEqual(3);
-        });
-
+    it('works for underscore', () => {
+        // just checking that _ works
+        expect(_.size([1,2,3])).toEqual(3);
     });
 
 });
+
 ```
 
 ## Running the tests
 
-Install Karma:
+Install dependencies:
 
 ```bash
-$ npm install -g karma
+$ npm install
 ```
 
 Now we can run the tests with:
 
 ```bash
-$ karma start
+$ gulp test
 ```
 
-If you didn't configure to watch all the files and run tests
-automatically on any change, you can trigger the tests manually by
-typing:
 
-```bash
-$ karma run
-```
-
----
-
-Based on Jake Trent's [post], with some improvements on `shims` and so
-on.
 
 [Require.js]: http://requirejs.org/
-[post]: http://jaketrent.com/post/test-requirejs-testacular/
+[Issue]: https://github.com/Microsoft/TypeScript/issues/293
+[IssueDetail]: https://github.com/Microsoft/TypeScript/issues/1567
